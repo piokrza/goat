@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +39,20 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.6.2",
     "typescript": "~5.8.2",
-    "typescript-eslint": "8.34.1"
+    "typescript-eslint": "8.34.1",
+    "lint-staged": "^15.2.10",
+    "husky": "^9.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{scss,json}": "prettier --write"
   }
 }
