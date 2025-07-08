@@ -1,2 +1,2 @@
 export * from './expand-collapse';
-export * from './route-animation';
+export * from './route-transition';

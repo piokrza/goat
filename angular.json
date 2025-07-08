@@ -26,10 +26,10 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.scss"
-            ]
+            "styles": ["@angular/material/prebuilt-themes/azure-blue.css", "src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/asset/style"]
+            }
           },
           "configurations": {
             "production": {
@@ -81,27 +81,19 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.scss"
-            ]
+            "styles": ["@angular/material/prebuilt-themes/azure-blue.css", "src/styles.scss"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "angular-eslint"
-    ]
+    "schematicCollections": ["angular-eslint"]
   }
 }

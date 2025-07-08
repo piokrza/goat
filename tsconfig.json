@@ -16,7 +16,8 @@
     "module": "preserve",
     "paths": {
       "#core/*": ["src/app/core/*"],
-      "#ui/*": ["src/app/ui/*"]
+      "#ui/*": ["src/app/ui/*"],
+      "#form/*": ["src/app/feature/form/*"]
     }
   },
   "angularCompilerOptions": {

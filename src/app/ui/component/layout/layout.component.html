@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <div class="w-full flex justify-between items-center">
+    <div class="flex gap-4">
+      <button matIconButton class="cursor-pointer lg:hidden" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="flex items-center gap-2">
+        Playground
+        <img src="assets/img/logo.svg" alt="" class="w-10" />
+      </span>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button matIconButton (click)="toggleTheme()">
+      <mat-icon>{{ isDarkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container autosize>
+  <mat-drawer #drawer [mode]="isOverMdBreakpoint() ? 'side' : 'over'" [opened]="isOverMdBreakpoint()">
+    <nav class="h-full flex flex-col justify-between p-4">
+      <mat-nav-list>
+        @for (link of links; track $index) {
+          <a mat-list-item routerLinkActive="active" [routerLink]="[link.routerLink]" [routerLinkActiveOptions]="{ exact: true }">
+            {{ link.label }}
+          </a>
+        }
+      </mat-nav-list>
+    </nav>
+  </mat-drawer>
+
+  <main class="p-4 h-[calc(100vh-var(--mat-toolbar-mobile-height))] sm:h-[calc(100vh-var(--mat-toolbar-standard-height))]">
+    <router-outlet />
+  </main>
+</mat-drawer-container>
