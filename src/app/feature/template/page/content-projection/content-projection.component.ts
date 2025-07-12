@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import { ContentProjectionWidgetComponent } from '#template/component/content-projection-widget';
-import { ExampleWidgetContent } from '#template/component/example-widget-content';
-import { WidgetContentDirective } from '#template/directive';
+import { ExampleWidgetContentComponent } from '#template/component/example-widget-content';
+import { ContentDirective } from '#ui/directive';
 
-const imports = [ContentProjectionWidgetComponent, WidgetContentDirective, ExampleWidgetContent];
+const imports = [ContentProjectionWidgetComponent, ContentDirective, ExampleWidgetContentComponent];
 
 @Component({
   selector: 'pg-content-projection',

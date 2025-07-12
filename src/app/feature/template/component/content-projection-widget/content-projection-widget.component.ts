@@ -4,7 +4,7 @@ import { Component, contentChild, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { WidgetContentDirective } from '#template/directive';
+import { ContentDirective } from '#ui/directive';
 
 const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 
@@ -43,5 +43,5 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 export class ContentProjectionWidgetComponent {
   readonly isVisible = signal(true);
 
-  readonly content = contentChild(WidgetContentDirective);
+  readonly content = contentChild(ContentDirective);
 }

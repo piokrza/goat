@@ -7,7 +7,7 @@ import { Component, OnDestroy } from '@angular/core';
     <p>Content description</p>
   `,
 })
-export class ExampleWidgetContent implements OnDestroy {
+export class ExampleWidgetContentComponent implements OnDestroy {
   ngOnDestroy(): void {
     // eslint-disable-next-line no-console
     console.log('component destroyed');
