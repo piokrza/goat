@@ -17,7 +17,7 @@
     "paths": {
       "#core/*": ["src/app/core/*"],
       "#ui/*": ["src/app/ui/*"],
-      "#form/*": ["src/app/feature/form/*"]
+      "#template/*": ["src/app/feature/template/*"]
     }
   },
   "angularCompilerOptions": {

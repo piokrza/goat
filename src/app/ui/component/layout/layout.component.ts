@@ -36,7 +36,7 @@ export class LayoutComponent {
 
   readonly links: Link[] = [
     {
-      label: 'Forms',
+      label: 'Template',
       routerLink: '',
     },
   ];

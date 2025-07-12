@@ -4,6 +4,11 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: async () => (await import('#ui/component/layout')).LayoutComponent,
-    children: [],
+    children: [
+      {
+        path: '',
+        loadChildren: async () => (await import('#template/route')).TemplateRoutes,
+      },
+    ],
   },
 ];
