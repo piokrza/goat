@@ -9,7 +9,7 @@ import { WidgetContentDirective } from '#template/directive';
 const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 
 @Component({
-  selector: 'pg-widget',
+  selector: 'pg-content-projection-widget',
   template: `
     <mat-card appearance="outlined">
       <mat-card-header>
@@ -40,7 +40,7 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
   `,
   imports,
 })
-export class WidgetComponent {
+export class ContentProjectionWidgetComponent {
   readonly isVisible = signal(true);
 
   readonly content = contentChild(WidgetContentDirective);

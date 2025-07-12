@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 
+import { ContentProjectionWidgetComponent } from '#template/component/content-projection-widget';
 import { ExampleWidgetContent } from '#template/component/example-widget-content';
-import { WidgetComponent } from '#template/component/widget';
 import { WidgetContentDirective } from '#template/directive';
 
-const imports = [WidgetComponent, WidgetContentDirective, ExampleWidgetContent];
+const imports = [ContentProjectionWidgetComponent, WidgetContentDirective, ExampleWidgetContent];
 
 @Component({
   selector: 'pg-content-projection',
   template: `
-    <pg-widget class="block max-w-[30rem]">
+    <pg-content-projection-widget class="block max-w-[30rem]">
       <ng-container ngProjectAs="[widgetTitle]">Weather Forecast</ng-container>
       <ng-container ngProjectAs="[widgetSubTitle]">Currently in Lublin, Poland</ng-container>
 
       <pg-example-widget-content *widgetContent />
-    </pg-widget>
+    </pg-content-projection-widget>
   `,
   imports,
 })
