@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -10,20 +10,40 @@ const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent]
 @Component({
   selector: 'pg-section-toolbar',
   template: `
-    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab-group
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      [selectedIndex]="selectedIdx()"
+      (selectedIndexChange)="setSelectedIdx($event)">
       <mat-tab label="Content projection">
-        @defer {
-          <pg-content-projection />
-        }
+        <pg-content-projection />
       </mat-tab>
 
       <mat-tab label="Ng-template">
-        @defer {
-          <pg-ng-template />
-        }
+        <pg-ng-template />
       </mat-tab>
     </mat-tab-group>
   `,
   imports,
 })
-export class SectionToolbarComponent {}
+export class SectionToolbarComponent {
+  constructor() {
+    let idx: number;
+
+    try {
+      idx = JSON.parse(sessionStorage.getItem(this.#selectedIdxKey) ?? '0') as number;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Cannot get selected idx from session storage', e);
+      idx = 0;
+    }
+    this.selectedIdx = signal(idx);
+  }
+
+  readonly #selectedIdxKey = 'selectedIdx';
+  readonly selectedIdx: WritableSignal<number>;
+
+  setSelectedIdx(idx: number): void {
+    sessionStorage.setItem(this.#selectedIdxKey, `${idx}`);
+  }
+}
