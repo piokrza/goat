@@ -15,10 +15,10 @@ const imports = [MatButtonModule];
   imports,
 })
 export class TemplateWidgetCustomActions {
-  templateWeatherWidget = inject(TemlateOutletWidgetComponent);
+  readonly #templateWeatherWidgetComponent = inject(TemlateOutletWidgetComponent);
 
   reloadAndCopy(): void {
-    this.templateWeatherWidget.actions.reload();
-    this.templateWeatherWidget.actions.copyData();
+    this.#templateWeatherWidgetComponent.actions.reload();
+    this.#templateWeatherWidgetComponent.actions.copyData();
   }
 }

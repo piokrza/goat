@@ -46,9 +46,9 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
   imports,
 })
 export class TemlateOutletWidgetComponent {
+  readonly injector = inject(Injector);
   readonly state = inject(NgTemplateWidgetStateService);
   readonly actions = inject(NgTemplateWidgetActionsService);
-  readonly injector = inject(Injector);
 
   readonly headerTemplate = input<TemplateRef<unknown>>();
   readonly actionsTemplate = input<TemplateRef<unknown>>();
