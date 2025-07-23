@@ -1,6 +1,6 @@
 import { Directive, effect, inject, input, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { Loader } from '#ui/component/loader';
+import { LoaderComponent } from '#ui/component/loader';
 
 @Directive({ selector: '[isLoading]' })
 export class LoaderDirective {
@@ -9,7 +9,7 @@ export class LoaderDirective {
       this.#viewContainerRef.clear();
 
       if (this.isLoading()) {
-        this.#viewContainerRef.createComponent(Loader);
+        this.#viewContainerRef.createComponent(LoaderComponent);
       } else {
         this.#viewContainerRef.createEmbeddedView(this.#templateRef);
       }

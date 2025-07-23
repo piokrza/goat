@@ -16,4 +16,4 @@ const imports = [MatProgressSpinnerModule];
   `,
   imports,
 })
-export class Loader {}
+export class LoaderComponent {}

@@ -7,7 +7,7 @@ import { themes } from '#ui/constant';
 export class LayoutService {
   readonly #document = inject(DOCUMENT);
 
-  readonly isDarkMode = signal(JSON.parse(localStorage.getItem(Key.IS_DARK_MODE) ?? 'false'));
+  readonly isDarkMode = signal(JSON.parse(localStorage.getItem(Key.IS_DARK_MODE) ?? 'false') as boolean);
 
   initTheme(): void {
     this.setTheme();
@@ -18,7 +18,7 @@ export class LayoutService {
     this.isDarkMode.set(!this.isDarkMode());
 
     this.setColorScheme(this.isDarkMode());
-    localStorage.setItem(Key.IS_DARK_MODE, this.isDarkMode());
+    localStorage.setItem(Key.IS_DARK_MODE, JSON.stringify(this.isDarkMode()));
   }
 
   private setTheme(): void {

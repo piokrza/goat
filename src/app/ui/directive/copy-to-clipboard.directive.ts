@@ -1,6 +1,6 @@
 import { DestroyRef, Directive, ElementRef, OnInit, inject, input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { fromEvent, switchMap } from 'rxjs';
+import { fromEvent, tap } from 'rxjs';
 
 @Directive({ selector: '[copyToClipboard]' })
 export class CopyToClipboardDirective implements OnInit {
@@ -12,7 +12,9 @@ export class CopyToClipboardDirective implements OnInit {
   ngOnInit(): void {
     fromEvent(this.#elementRef.nativeElement, 'click')
       .pipe(
-        switchMap(() => navigator.clipboard.writeText(this.copyToClipboard() ?? '')),
+        tap(async () => {
+          await navigator.clipboard.writeText(this.copyToClipboard() ?? '');
+        }),
         takeUntilDestroyed(this.#destroyRef)
       )
       .subscribe();
