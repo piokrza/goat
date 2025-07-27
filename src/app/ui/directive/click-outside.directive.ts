@@ -1,11 +1,11 @@
-import { Directive, ElementRef, inject, OnDestroy, output, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, inject, OnDestroy, output, Renderer2, signal } from '@angular/core';
 
 @Directive({ selector: '[clickOutside]' })
 export class ClickOutsideDirective implements OnDestroy {
   constructor() {
     this.#listener = this.#renderer.listen('document', 'click', (e: Event) => {
-      if (!this.#isFirstClick) {
-        this.#isFirstClick = false;
+      if (!this.#isFirstClick()) {
+        this.#isFirstClick.set(false);
         return;
       }
 
@@ -20,8 +20,8 @@ export class ClickOutsideDirective implements OnDestroy {
 
   readonly clickOutside = output<void>();
 
-  #isFirstClick = true;
-  #listener: (() => void) | null = null;
+  readonly #listener: () => void;
+  readonly #isFirstClick = signal(true);
 
   ngOnDestroy(): void {
     this.#listener?.();

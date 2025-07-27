@@ -11,8 +11,8 @@ const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent]
   selector: 'pg-section-toolbar',
   template: `
     <mat-tab-group
-      mat-stretch-tabs="false"
       mat-align-tabs="start"
+      mat-stretch-tabs="false"
       [selectedIndex]="selectedIdx()"
       (selectedIndexChange)="setSelectedIdx($event)">
       <mat-tab label="Content projection">
