@@ -16,11 +16,11 @@ const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent]
       [selectedIndex]="selectedIdx()"
       (selectedIndexChange)="setSelectedIdx($event)">
       <mat-tab label="Content projection">
-        <pg-content-projection />
+        <pg-content-projection class="mt-4 block" />
       </mat-tab>
 
       <mat-tab label="Ng-template">
-        <pg-ng-template />
+        <pg-ng-template class="mt-4 block" />
       </mat-tab>
     </mat-tab-group>
   `,
