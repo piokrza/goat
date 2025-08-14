@@ -3,8 +3,10 @@ import { Component, OnDestroy } from '@angular/core';
 @Component({
   selector: 'pg-example-widget-content',
   template: `
-    <h2>Example widget content</h2>
-    <p>Content description</p>
+    <div class="border p-3 rounded-xl">
+      <h2>Example widget content</h2>
+      <p>Content description</p>
+    </div>
   `,
 })
 export class ExampleWidgetContentComponent implements OnDestroy {

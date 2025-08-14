@@ -8,18 +8,18 @@ const imports = [TemlateOutletWidgetComponent, TemplateWidgetCustomActions];
 @Component({
   selector: 'pg-ng-template',
   template: `
+    <!--------Component---------->
     <pg-template-outlet-widget
       class="block max-w-[30rem]"
       [headerTemplate]="alternativeWidgetHeader"
       [contentTemplate]="alternativeWidgetContent"
       [actionsTemplate]="alrternativeWidgetActions" />
 
+    <!--------NgTemplates---------->
     <ng-template #alternativeWidgetHeader> Template passed by input </ng-template>
 
     <ng-template #alternativeWidgetContent let-state>
-      <div>
-        <span>TEMPLATE from parent level {{ state.data.temperature }}</span>
-      </div>
+      <span>TEMPLATE from parent level {{ state.data.temperature }}degrees</span>
     </ng-template>
 
     <ng-template #alrternativeWidgetActions>

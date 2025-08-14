@@ -7,8 +7,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { Path } from '#core/enum';
+import { LayoutService } from '#ui/layout';
 import { Link } from '#ui/model';
-import { BreakpointService, LayoutService } from '#ui/service';
+import { BreakpointService } from '#ui/service';
 
 const imports = [
   RouterLink,
@@ -38,6 +40,10 @@ export class LayoutComponent {
     {
       label: 'Template',
       routerLink: '',
+    },
+    {
+      label: 'Web3',
+      routerLink: Path.WEB3,
     },
   ];
 

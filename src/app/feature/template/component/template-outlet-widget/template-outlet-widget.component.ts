@@ -14,6 +14,8 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
     <mat-card appearance="outlined">
       <mat-card-header>
         <ng-container [ngTemplateOutlet]="headerTemplate() || defaultWidgetHeader" />
+
+        <!--DEFAULT HEADER TEMPLATE-->
         <ng-template #defaultWidgetHeader>
           <div>Weather forecast</div>
           <div>Current weather in your</div>
@@ -27,6 +29,7 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
             $implicit: state,
           }" />
 
+        <!--DEFAULT CONTENT TEMPLATE-->
         <ng-template #defaultWidgetContent>
           <div>{{ state.data.skyCondition === 'sunny' }}</div>
           <div>{{ state.data.temperature }}°C</div>
@@ -36,6 +39,7 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
       <mat-card-actions class="gap-3 mt-4">
         <ng-container [ngTemplateOutlet]="actionsTemplate() || defaultWidgetActions" [ngTemplateOutletInjector]="injector" />
 
+        <!--DEFAULT ACTIONS TEMPLATE-->
         <ng-template #defaultWidgetActions>
           <button mat-stroked-button (click)="actions.reload()">Reload</button>
           <button mat-stroked-button (click)="actions.copyData()">Copy info</button>

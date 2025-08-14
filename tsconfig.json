@@ -17,7 +17,8 @@
     "paths": {
       "#core/*": ["src/app/core/*"],
       "#ui/*": ["src/app/ui/*"],
-      "#template/*": ["src/app/feature/template/*"]
+      "#template/*": ["src/app/feature/template/*"],
+      "#web3/*": ["src/app/feature/web3/*"]
     }
   },
   "angularCompilerOptions": {
@@ -29,11 +30,11 @@
   },
   "files": [],
   "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.spec.json" },
+    { "path": "./projects/web3/tsconfig.app.json" },
+    { "path": "./projects/web3/tsconfig.spec.json" },
+    { "path": "./projects/template/tsconfig.app.json" },
+    { "path": "./projects/template/tsconfig.spec.json" }
   ]
 }

@@ -1,1 +1,1 @@
-export * from './content-projection.routes';
+export * from './template.routes';

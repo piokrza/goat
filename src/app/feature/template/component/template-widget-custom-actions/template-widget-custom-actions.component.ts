@@ -9,8 +9,10 @@ const imports = [MatButtonModule];
 @Component({
   selector: 'pg-template-widget-custom-actions',
   template: `
-    <h1>Custom template widget actions component works!!</h1>
-    <button mat-stroked-button (click)="reloadAndCopy()">Reload & Copy</button>
+    <div class="rounded-xl border p-3">
+      <h1 class="mb-3">Custom template widget actions component works!!</h1>
+      <button mat-stroked-button (click)="reloadAndCopy()">Reload & Copy</button>
+    </div>
   `,
   imports,
 })

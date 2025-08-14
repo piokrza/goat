@@ -28,16 +28,7 @@ const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent]
 })
 export class SectionToolbarComponent {
   constructor() {
-    let idx: number;
-
-    try {
-      idx = JSON.parse(sessionStorage.getItem(this.#selectedIdxKey) ?? '0') as number;
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error('Cannot get selected idx from session storage', e);
-      idx = 0;
-    }
-    this.selectedIdx = signal(idx);
+    this.selectedIdx = signal(this.tabIdx);
   }
 
   readonly #selectedIdxKey = 'selectedIdx';
@@ -45,5 +36,18 @@ export class SectionToolbarComponent {
 
   setSelectedIdx(idx: number): void {
     sessionStorage.setItem(this.#selectedIdxKey, `${idx}`);
+  }
+
+  get tabIdx(): number {
+    let idx = 0;
+
+    try {
+      idx = JSON.parse(sessionStorage.getItem(this.#selectedIdxKey) ?? '0') as number;
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Cannot get selected idx from session storage', e);
+    }
+
+    return idx;
   }
 }
