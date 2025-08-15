@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shell": {
+    "goat": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -59,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "shell:build:production"
+              "buildTarget": "goat:build:production"
             },
             "development": {
-              "buildTarget": "shell:build:development"
+              "buildTarget": "goat:build:development"
             }
           },
           "defaultConfiguration": "development"
