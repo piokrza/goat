@@ -1,14 +1,15 @@
 import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
 
 import { Key } from '#core/enum';
-import { themes } from '#ui/constant';
 
 @Injectable({ providedIn: 'root' })
-export class LayoutService {
+export class ThemeService {
   readonly #document = inject(DOCUMENT);
 
   readonly #isDarkMode = signal(JSON.parse(localStorage.getItem(Key.IS_DARK_MODE) ?? 'false') as boolean);
   readonly isDarkMode = this.#isDarkMode.asReadonly();
+
+  readonly themes = ['theme-blue', 'theme-green', 'theme-red'];
 
   initTheme(): void {
     this.setTheme();
@@ -22,9 +23,9 @@ export class LayoutService {
     localStorage.setItem(Key.IS_DARK_MODE, JSON.stringify(this.#isDarkMode()));
   }
 
-  private setTheme(): void {
-    const theme = localStorage.getItem('theme') ?? 'theme-green';
-    themes.forEach((t) => this.#document.body.classList.remove(t));
+  setTheme(themeName?: string): void {
+    const theme = themeName ?? localStorage.getItem('theme') ?? 'theme-green';
+    this.themes.forEach((t) => this.#document.body.classList.remove(t)); // TODO: refactor
     this.#document.body.classList.add(theme);
   }
 

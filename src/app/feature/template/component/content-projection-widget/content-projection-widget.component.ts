@@ -4,7 +4,7 @@ import { Component, contentChild, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { ContentDirective } from '#ui/directive';
+import { ContentDirective } from '#ui/directive/content.directive';
 
 const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 
