@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:web": "ng serve web --port=4200",
+    "start:widget": "ng serve widget --port=4201",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -18,6 +19,7 @@
     "@angular/common": "^20.1.7",
     "@angular/compiler": "^20.1.7",
     "@angular/core": "^20.1.7",
+    "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.1.7",
     "@angular/material": "^20.1.6",
     "@angular/platform-browser": "^20.1.7",
