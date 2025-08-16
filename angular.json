@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shell": {
+    "echo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -59,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "shell:build:production"
+              "buildTarget": "echo:build:production"
             },
             "development": {
-              "buildTarget": "shell:build:development"
+              "buildTarget": "echo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -95,30 +95,30 @@
         }
       }
     },
-    "web3": {
+    "web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/web3",
-      "sourceRoot": "projects/web3/src",
+      "root": "projects/web",
+      "sourceRoot": "projects/web/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/web3/src/main.ts",
-            "tsConfig": "projects/web3/tsconfig.app.json",
+            "browser": "projects/web/src/main.ts",
+            "tsConfig": "projects/web/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/web3/public"
+                "input": "projects/web/public"
               }
             ],
-            "styles": ["projects/web3/src/styles.scss"]
+            "styles": ["projects/web/src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -148,10 +148,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "web3:build:production"
+              "buildTarget": "web:build:production"
             },
             "development": {
-              "buildTarget": "web3:build:development"
+              "buildTarget": "web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -162,50 +162,50 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/web3/tsconfig.spec.json",
+            "tsConfig": "projects/web/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/web3/public"
+                "input": "projects/web/public"
               }
             ],
-            "styles": ["projects/web3/src/styles.scss"]
+            "styles": ["projects/web/src/styles.scss"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/web3/**/*.ts", "projects/web3/**/*.html"],
-            "eslintConfig": "projects/web3/eslint.config.js"
+            "lintFilePatterns": ["projects/web/**/*.ts", "projects/web/**/*.html"],
+            "eslintConfig": "projects/web/eslint.config.js"
           }
         }
       }
     },
-    "template": {
+    "widget": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/template",
-      "sourceRoot": "projects/template/src",
+      "root": "projects/widget",
+      "sourceRoot": "projects/widget/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/template/src/main.ts",
-            "tsConfig": "projects/template/tsconfig.app.json",
+            "browser": "projects/widget/src/main.ts",
+            "tsConfig": "projects/widget/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/template/public"
+                "input": "projects/widget/public"
               }
             ],
-            "styles": ["projects/template/src/styles.scss"]
+            "styles": ["projects/widget/src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -235,10 +235,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "template:build:production"
+              "buildTarget": "widget:build:production"
             },
             "development": {
-              "buildTarget": "template:build:development"
+              "buildTarget": "widget:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -249,22 +249,22 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/template/tsconfig.spec.json",
+            "tsConfig": "projects/widget/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/template/public"
+                "input": "projects/widget/public"
               }
             ],
-            "styles": ["projects/template/src/styles.scss"]
+            "styles": ["projects/widget/src/styles.scss"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/template/**/*.ts", "projects/template/**/*.html"],
-            "eslintConfig": "projects/template/eslint.config.js"
+            "lintFilePatterns": ["projects/widget/**/*.ts", "projects/widget/**/*.html"],
+            "eslintConfig": "projects/widget/eslint.config.js"
           }
         }
       }

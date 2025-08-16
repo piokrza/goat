@@ -30,11 +30,35 @@
   },
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.spec.json" },
-    { "path": "./projects/web3/tsconfig.app.json" },
-    { "path": "./projects/web3/tsconfig.spec.json" },
-    { "path": "./projects/template/tsconfig.app.json" },
-    { "path": "./projects/template/tsconfig.spec.json" }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/web3/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/web3/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/template/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/template/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/web/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/web/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/widget/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/widget/tsconfig.spec.json"
+    }
   ]
 }
