@@ -15,10 +15,8 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "#core/*": ["src/app/core/*"],
-      "#ui/*": ["src/app/ui/*"],
-      "#template/*": ["src/app/feature/template/*"],
-      "#web3/*": ["src/app/feature/web3/*"]
+      "#shared/*": ["libs/shared/lib/*"],
+      "#web/*": ["projects/web/src/app/*"]
     }
   },
   "angularCompilerOptions": {
@@ -37,18 +35,6 @@
       "path": "./tsconfig.spec.json"
     },
     {
-      "path": "./projects/web3/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/web3/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/template/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/template/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/web/tsconfig.app.json"
     },
     {
@@ -59,6 +45,12 @@
     },
     {
       "path": "./projects/widget/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.spec.json"
     }
   ]
 }
