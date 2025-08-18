@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { TemlateOutletWidgetComponent } from '#template/component/template-outlet-widget';
-import { TemplateWidgetCustomActions } from '#template/component/template-widget-custom-actions';
+import { TemlateOutletWidgetComponent } from '../../component/template-outlet-widget';
+import { TemplateWidgetCustomActions } from '../../component/template-widget-custom-actions';
 
 const imports = [TemlateOutletWidgetComponent, TemplateWidgetCustomActions];
 
 @Component({
-  selector: 'pg-ng-template',
+  selector: 'lib-ng-template',
   template: `
     <!--------Component---------->
     <pg-template-outlet-widget

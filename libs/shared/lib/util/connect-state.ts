@@ -1,10 +1,9 @@
-import { ObservableDictionary, StateObject } from '../model';
-
 import type { DestroyRef } from '@angular/core';
 import { ChangeDetectorRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { from, mergeMap, tap } from 'rxjs';
 
+import { ObservableDictionary, StateObject } from '../model';
 
 export function connectState<T>(destroyRef: DestroyRef, sourceObject: ObservableDictionary<T>): StateObject<T> {
   const cdRef = inject(ChangeDetectorRef);

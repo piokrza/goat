@@ -1,11 +1,10 @@
-import { breakpoints } from '../constant';
-import { Breakpoint } from '../model';
-
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { inject, Injectable, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, Observable } from 'rxjs';
 
+import { breakpoints } from '../constant';
+import { Breakpoint } from '../model';
 
 @Injectable({ providedIn: 'root' })
 export class BreakpointService {

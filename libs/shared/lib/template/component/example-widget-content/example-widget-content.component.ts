@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'pg-example-widget-content',
+  selector: 'lib-example-widget-content',
   template: `
     <div class="border p-3 rounded-xl">
       <h2>Example widget content</h2>

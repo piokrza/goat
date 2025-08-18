@@ -1,6 +1,6 @@
 import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
 
-import { Key } from '#shared/enum';
+import { Key } from '../../enum';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {

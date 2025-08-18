@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 
-import { TemlateOutletWidgetComponent } from '#template/component/template-outlet-widget';
+import { TemlateOutletWidgetComponent } from '../template-outlet-widget';
 
 const imports = [MatButtonModule];
 
 @Component({
-  selector: 'pg-template-widget-custom-actions',
+  selector: 'lib-template-widget-custom-actions',
   template: `
     <div class="rounded-xl border p-3">
       <h1 class="mb-3">Custom template widget actions component works!!</h1>

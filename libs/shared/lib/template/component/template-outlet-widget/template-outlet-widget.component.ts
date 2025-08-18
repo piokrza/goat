@@ -4,12 +4,12 @@ import { Component, inject, Injector, input, TemplateRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { NgTemplateWidgetActionsService, NgTemplateWidgetStateService } from '#template/service';
+import { NgTemplateWidgetActionsService, NgTemplateWidgetStateService } from '../../service';
 
 const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 
 @Component({
-  selector: 'pg-template-outlet-widget',
+  selector: 'lib-template-outlet-widget',
   template: `
     <mat-card appearance="outlined">
       <mat-card-header>

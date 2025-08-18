@@ -4,12 +4,12 @@ import { Component, contentChild, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { ContentDirective } from '#ui/directive/content.directive';
+import { ContentDirective } from '../../../ui/directive';
 
 const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
 
 @Component({
-  selector: 'pg-content-projection-widget',
+  selector: 'lib-content-projection-widget',
   template: `
     <mat-card appearance="outlined">
       <mat-card-header>

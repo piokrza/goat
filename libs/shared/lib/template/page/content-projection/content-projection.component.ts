@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
-import { ContentProjectionWidgetComponent } from '#template/component/content-projection-widget';
-import { ExampleWidgetContentComponent } from '#template/component/example-widget-content';
-import { ContentDirective } from '#ui/directive';
+import { ContentDirective } from '../../../ui/directive';
+import { ContentProjectionWidgetComponent } from '../../component/content-projection-widget';
+import { ExampleWidgetContentComponent } from '../../component/example-widget-content';
 
 const imports = [ContentProjectionWidgetComponent, ContentDirective, ExampleWidgetContentComponent];
 
 @Component({
-  selector: 'pg-content-projection',
+  selector: 'lib-content-projection',
   template: `
     <pg-content-projection-widget class="block max-w-[30rem]">
       <ng-container ngProjectAs="[widgetTitle]">Weather Forecast</ng-container>

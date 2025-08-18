@@ -2,13 +2,13 @@ import { Component, signal, WritableSignal } from '@angular/core';
 
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { ContentProjectionComponent } from '#template/page/content-projection';
-import { NgTemplateComponent } from '#template/page/ng-template';
+import { ContentProjectionComponent } from '../../page/content-projection';
+import { NgTemplateComponent } from '../../page/ng-template/';
 
 const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent];
 
 @Component({
-  selector: 'pg-section-toolbar',
+  selector: 'lib-section-toolbar',
   template: `
     <mat-tab-group
       mat-align-tabs="start"

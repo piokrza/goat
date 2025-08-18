@@ -10,8 +10,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { Link } from '#shared/ui/model';
-import { ThemeService, BreakpointService } from '#shared/ui/service';
+import { Link } from '../../ui/model';
+import { ThemeService, BreakpointService } from '../../ui/service';
 
 const imports = [
   RouterLink,
