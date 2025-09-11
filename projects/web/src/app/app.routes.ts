@@ -7,14 +7,20 @@ import { Path } from '#common/enum';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: async () => (await import('#ui/layout')).LayoutComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: () => redirectUnauthorizedTo([Path.AUTH]) },
+    loadComponent: async () => (await import('#ui/layout')).LayoutComponent,
     children: [
+      { path: '', pathMatch: 'full', redirectTo: Path.TEMPLATE },
       {
-        path: '',
+        path: Path.TEMPLATE,
         title: 'ng-template',
         loadChildren: async () => (await import('#template/route')).TemplateRoutes,
+      },
+      {
+        path: Path.FORMS,
+        title: 'forms',
+        loadChildren: async () => (await import('#forms/route')).FormsRoutes,
       },
     ],
   },
@@ -22,7 +28,7 @@ export const routes: Routes = [
     path: Path.AUTH,
     canActivate: [AuthGuard],
     title: 'authentication',
-    data: { authGuardPipe: () => redirectLoggedInTo(['/']) },
+    data: { authGuardPipe: () => redirectLoggedInTo([Path.TEMPLATE]) },
     loadComponent: async () => (await import('#auth/page')).AuthComponent,
   },
 ];

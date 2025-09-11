@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AuthService } from '#auth/service';
+import { Path } from '#common/enum';
 import { AppTheme, Link } from '#ui/model';
 import { ThemeService, BreakpointService } from '#ui/service';
 
@@ -44,7 +45,10 @@ export class LayoutComponent {
   readonly selectedTheme = this.#themeService.selectedTheme;
   readonly isOverMdBreakpoint = inject(BreakpointService).observe('md');
 
-  readonly links: Link[] = [{ label: 'Template', routerLink: '' }];
+  readonly links: Link[] = [
+    { label: 'Template', routerLink: Path.TEMPLATE },
+    { label: 'Forms', routerLink: Path.FORMS },
+  ];
   readonly themes: AppTheme[] = [
     { value: 'theme-blue', viewValue: '🔵' },
     { value: 'theme-red', viewValue: '🔴' },
