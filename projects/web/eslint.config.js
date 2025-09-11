@@ -11,7 +11,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'element',
-          prefix: 'web',
+          prefix: 'echo',
           style: 'kebab-case',
         },
       ],

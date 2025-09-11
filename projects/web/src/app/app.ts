@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 const imports = [RouterOutlet];
 
 @Component({
-  selector: 'web-root',
+  selector: 'echo-root',
   template: `<router-outlet />`,
   imports,
 })

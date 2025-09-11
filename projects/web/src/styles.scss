@@ -1,4 +1,4 @@
-@use '../../../libs/shared/lib/style/theme' as theme;
+@use 'theme' as theme;
 @use '@angular/material' as mat;
 @use 'tailwindcss';
 
@@ -22,6 +22,12 @@ body {
       density: 1,
     )
   );
+}
+
+@layer components {
+  .link-active {
+    background-color: var(--mat-sys-surface-container) !important;
+  }
 }
 
 .theme-red {

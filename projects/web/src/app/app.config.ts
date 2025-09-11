@@ -1,8 +1,8 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { provideEchoFirestoreConfig } from '#shared/firebase';
-import { initializeAppTheme } from '#shared/ui/provider';
+import { provideEchoFirestoreConfig } from '#common/auth/firebase/provider';
+import { initializeAppTheme } from '#ui/provider';
 import { routes } from '#web/app/app.routes';
 
 export const appConfig: ApplicationConfig = {
