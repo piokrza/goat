@@ -1,0 +1,28 @@
+<section class="h-screen flex items-center justify-center p-4 bg-red-100">
+  <mat-card appearance="outlined" class="w-full max-w-xl p-4">
+    <h1 class="text-center mb-8 text-3xl">Login</h1>
+
+    <form class="grid" [formGroup]="form" (ngSubmit)="loginWithEmailAndPassword()">
+      <mat-form-field class="example-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" [formControl]="form.controls.email" />
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [formControl]="form.controls.password" />
+      </mat-form-field>
+
+      <button matButton class="w-full" type="submit" [disabled]="form.invalid || state().isProcessing">Login</button>
+    </form>
+
+    <div class="text-center mb-4">Or</div>
+
+    <div class="flex justify-center">
+      <button extended matButton="filled" [disabled]="state().isProcessing" (click)="loginWithGoogle()">
+        <mat-icon svgIcon="google" />
+        Login with Google
+      </button>
+    </div>
+  </mat-card>
+</section>

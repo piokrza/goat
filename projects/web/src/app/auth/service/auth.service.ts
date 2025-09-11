@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import {
   Auth,
-  updateProfile,
+  // updateProfile,
   UserCredential,
   signInWithPopup,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -22,10 +23,25 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   readonly #router = inject(Router);
   readonly #fireAuth = inject(Auth);
 
-  createUserWithEmailAndPassword$(email: string, username: string, password: string): Observable<UserCredential> {
+  createUserWithEmailAndPassword$(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.#fireAuth, email, password)).pipe(
-      tap((res) => {
-        updateProfile(res.user, { displayName: username });
+      tap((_) => {
+        // updateProfile(res.user, { displayName: username });
+      })
+    );
+  }
+
+  loginWithEmailAndPassword$(email: string, password: string): Observable<UserCredential> {
+    this.update('isProcessing', true);
+
+    return from(signInWithEmailAndPassword(this.#fireAuth, email, password)).pipe(
+      tap({
+        next: () => {
+          this.#router.navigate([Path.TEMPLATE]);
+        },
+        finalize: () => {
+          this.update('isProcessing', false);
+        },
       })
     );
   }
@@ -36,7 +52,7 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
     return from(signInWithPopup(this.#fireAuth, new GoogleAuthProvider())).pipe(
       tap({
         next: () => {
-          this.#router.navigateByUrl('/');
+          this.#router.navigate([Path.TEMPLATE]);
         },
         finalize: () => {
           this.update('isProcessing', false);

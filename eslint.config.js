@@ -50,6 +50,7 @@ module.exports = tseslint.config(
       'no-debugger': 'error',
       'prefer-const': 'error',
       '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'no-public' }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '_' }],
     },
   },
   {
