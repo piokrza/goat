@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { from, Observable, tap } from 'rxjs';
 
 import { Store } from '#common/abstract';
+import { Path } from '#common/enum';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService extends Store<{ isProcessing: boolean }> {
@@ -44,7 +45,11 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
     );
   }
 
-  logout(): Promise<void> {
-    return this.#fireAuth.signOut();
+  logout$(): Observable<void> {
+    return from(this.#fireAuth.signOut()).pipe(
+      tap(() => {
+        this.#router.navigate([Path.AUTH]);
+      })
+    );
   }
 }

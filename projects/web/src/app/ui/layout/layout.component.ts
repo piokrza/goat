@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
@@ -10,7 +11,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { Link } from '#ui/model';
+import { AuthService } from '#auth/service';
+import { AppTheme, Link } from '#ui/model';
 import { ThemeService, BreakpointService } from '#ui/service';
 
 const imports = [
@@ -34,6 +36,8 @@ const imports = [
   imports,
 })
 export class LayoutComponent {
+  readonly #destroyRef = inject(DestroyRef);
+  readonly #authService = inject(AuthService);
   readonly #themeService = inject(ThemeService);
 
   readonly isDarkMode = this.#themeService.isDarkMode;
@@ -41,7 +45,7 @@ export class LayoutComponent {
   readonly isOverMdBreakpoint = inject(BreakpointService).observe('md');
 
   readonly links: Link[] = [{ label: 'Template', routerLink: '' }];
-  readonly themes = [
+  readonly themes: AppTheme[] = [
     { value: 'theme-blue', viewValue: '🔵' },
     { value: 'theme-red', viewValue: '🔴' },
     { value: 'theme-green', viewValue: '🟢' },
@@ -53,5 +57,9 @@ export class LayoutComponent {
 
   toggleThemeMode(): void {
     this.#themeService.toggleIsDarkMode();
+  }
+
+  logout(): void {
+    this.#authService.logout$().pipe(takeUntilDestroyed(this.#destroyRef)).subscribe();
   }
 }
