@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-import { CollectionName } from '#common/auth/model';
+import { CollectionName } from '#auth/model';
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseApi {

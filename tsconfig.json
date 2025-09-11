@@ -18,6 +18,7 @@
       "#web/*": ["projects/web/src/*"],
       "#common/*": ["projects/web/src/app/common/*"],
       "#ui/*": ["projects/web/src/app/ui/*"],
+      "#auth/*": ["projects/web/src/app/auth/*"],
       "#template/*": ["projects/web/src/app/feature/template/*"]
     }
   },
