@@ -1,9 +1,9 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
-    catchError((error: HttpErrorResponse): Observable<never> => {
+    catchError((error: HttpErrorResponse) => {
       let errorMsg = '';
 
       if (error.error instanceof ErrorEvent) {
