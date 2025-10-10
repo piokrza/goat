@@ -4,7 +4,9 @@
   </mat-card-header>
 
   <mat-card-content class="mt-8">
-    <div class="grid gap-4">
+    <form class="grid gap-4" [formGroup]="form">
+      @let c = form.controls;
+
       <div class="flex gap-4">
         <div class="flex items-center justify-center w-xs">Name/Info</div>
 
@@ -12,34 +14,23 @@
           <mat-form-field>
             <mat-label>First Name</mat-label>
 
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
+            <input matInput type="text" [formControl]="c.firstName" />
+            @if (c.firstName.value) {
+              <button matSuffix matIconButton aria-label="Clear">
+                <mat-icon>close</mat-icon>
+              </button>
+            }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Last Name</mat-label>
 
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Title</mat-label>
-
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
+            <input matInput type="text" [formControl]="c.lastName" />
+            @if (c.lastName.value) {
+              <button matSuffix matIconButton aria-label="Clear">
+                <mat-icon>close</mat-icon>
+              </button>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -50,51 +41,25 @@
         <div class="flex items-center justify-center w-xs">Phone</div>
 
         <div class="grid w-full">
-          <mat-form-field>
-            <mat-label>Phone</mat-label>
+          <ng-container [formGroup]="c.phone">
+            @let pC = form.controls.phone.controls;
+            <mat-form-field>
+              <mat-label>Phone</mat-label>
 
-            <input matInput type="number" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Type</mat-label>
-            <mat-select>
-              <mat-select-trigger> Trigger value </mat-select-trigger>
-              @for (phoneType of ['mobile', 'piesek']; track $index) {
-                <mat-option [value]="phoneType">{{ phoneType }}</mat-option>
+              <input matInput type="number" [formControl]="pC.phoneNumber" />
+              @if (pC.phoneNumber.value) {
+                <button matSuffix matIconButton aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
               }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
+            </mat-form-field>
 
-      <mat-divider />
-
-      <div class="flex gap-4">
-        <div class="flex items-center justify-center w-xs">Email</div>
-
-        <div class="grid w-full">
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-
-            <input matInput type="number" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-            @for (kind of ['home', 'work', 'other']; track $index) {
-              <mat-radio-button class="example-radio-button" [value]="kind">{{ kind }}</mat-radio-button>
-            }
-          </mat-radio-group>
+            <mat-radio-group [formControl]="pC.phoneType">
+              @for (kind of ['home', 'work', 'other']; track $index) {
+                <mat-radio-button class="example-radio-button" [value]="kind">{{ kind }}</mat-radio-button>
+              }
+            </mat-radio-group>
+          </ng-container>
         </div>
       </div>
 
@@ -104,66 +69,70 @@
         <div class="flex items-center justify-center w-xs">Address</div>
 
         <div class="grid w-full">
-          <mat-form-field>
-            <mat-label>Address</mat-label>
+          <ng-container [formGroup]="c.address">
+            @let aC = form.controls.address.controls;
 
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
 
-          <mat-form-field>
-            <mat-label>City</mat-label>
-
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>State/Region</mat-label>
-
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Zip/Postal Code</mat-label>
-
-            <input matInput type="text" />
-            <!-- @if (value) { -->
-            <button matSuffix matIconButton aria-label="Clear">
-              <mat-icon>close</mat-icon>
-            </button>
-            <!-- } -->
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Home</mat-label>
-            <mat-select>
-              <mat-select-trigger> Home </mat-select-trigger>
-              @for (addressKind of ['home', 'blok']; track $index) {
-                <mat-option [value]="addressKind">{{ addressKind }}</mat-option>
+              <input matInput type="text" [formControl]="aC.streetAddress" />
+              @if (aC.streetAddress.value) {
+                <button matSuffix matIconButton aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
               }
-            </mat-select>
-          </mat-form-field>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>City</mat-label>
+
+              <input matInput type="text" [formControl]="aC.city" />
+              @if (aC.city.value) {
+                <button matSuffix matIconButton aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>State/Region</mat-label>
+
+              <input matInput type="text" [formControl]="aC.state" />
+              @if (aC.state.value) {
+                <button matSuffix matIconButton aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Zip/Postal Code</mat-label>
+
+              <input matInput type="text" [formControl]="aC.postalCode" />
+              @if (aC.postalCode.value) {
+                <button matSuffix matIconButton aria-label="Clear">
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Home</mat-label>
+              <mat-select [formControl]="aC.addressType">
+                <mat-select-trigger> Home </mat-select-trigger>
+                @for (addressKind of ['home', 'blok']; track $index) {
+                  <mat-option [value]="addressKind">{{ addressKind }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
         </div>
       </div>
-    </div>
+    </form>
   </mat-card-content>
 
   <mat-card-footer class="my-4 flex gap-4">
     <button mat-button class="flex-grow-1">Cancel</button>
-    <button matButton="filled" class="flex-grow-1">Save</button>
+    <button matButton="filled" class="flex-grow-1" (click)="saveContact()">Save</button>
   </mat-card-footer>
 </mat-card>
