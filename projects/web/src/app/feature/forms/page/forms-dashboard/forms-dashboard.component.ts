@@ -17,6 +17,6 @@ const imports = [MatButtonModule, RouterLink];
   `,
   imports,
 })
-export class ReactiveFormsComponent {
+export class FormsDashboardComponent {
   readonly Path = Path;
 }

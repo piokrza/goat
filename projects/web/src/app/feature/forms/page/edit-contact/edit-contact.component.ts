@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -27,23 +27,24 @@ const imports = [
   imports,
 })
 export class EditContactComponent implements OnInit {
+  readonly #fb = inject(FormBuilder);
   readonly #activatedRoute = inject(ActivatedRoute);
 
-  readonly form = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    dateOfBirth: new FormControl(),
-    favoritesRanking: new FormControl(''),
-    phone: new FormGroup({
-      phoneNumber: new FormControl(),
-      phoneType: new FormControl(),
+  readonly form = this.#fb.nonNullable.group({
+    firstName: '',
+    lastName: '',
+    dateOfBirth: null as Date | null,
+    favoritesRanking: null as number | null,
+    phone: this.#fb.nonNullable.group({
+      phoneNumber: '',
+      phoneType: '',
     }),
-    address: new FormGroup({
-      streetAddress: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      postalCode: new FormControl(),
-      addressType: new FormControl(),
+    address: this.#fb.nonNullable.group({
+      streetAddress: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      addressType: '',
     }),
   });
 
