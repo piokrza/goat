@@ -1,5 +1,5 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest, HttpResponse } from '@angular/common/http';
-import { of, tap } from 'rxjs';
+import { filter, of, tap } from 'rxjs';
 
 const cacheDataMap = new Map<string, HttpResponse<unknown>>();
 
@@ -10,11 +10,7 @@ export const cacheInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, n
   if (data) return of(data);
 
   return next(req).pipe(
-    tap((httpEvent) => {
-      // TODO: check filter operator
-      if (httpEvent instanceof HttpResponse) {
-        cacheDataMap.set(req.url, httpEvent);
-      }
-    })
+    filter((e): e is HttpResponse<unknown> => e instanceof HttpResponse),
+    tap((httpEvent) => cacheDataMap.set(req.url, httpEvent))
   );
 };

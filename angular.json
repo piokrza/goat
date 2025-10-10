@@ -80,7 +80,8 @@
               {
                 "glob": "**/*",
                 "input": "projects/web/public"
-              }
+              },
+              "projects/web/src/asset"
             ],
             "styles": ["projects/web/src/styles.scss"]
           }
