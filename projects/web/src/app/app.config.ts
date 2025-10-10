@@ -1,8 +1,7 @@
-import { routes } from './app.routes';
-
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
+import { routes } from 'projects/web/src/app';
 
 import { provideEchoFirestoreConfig } from '#auth/firebase/provider';
 import { initializeAppTheme, registerIcons } from '#ui/provider';
@@ -12,9 +11,9 @@ export const appConfig: ApplicationConfig = {
     registerIcons(),
     provideHttpClient(),
     initializeAppTheme(),
-    provideRouter(routes),
     provideEchoFirestoreConfig(),
     provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
+    provideRouter(routes, withViewTransitions()),
   ],
 };

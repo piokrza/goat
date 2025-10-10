@@ -11,16 +11,16 @@ export const routes: Routes = [
     data: { authGuardPipe: () => redirectUnauthorizedTo([Path.AUTH]) },
     loadComponent: async () => (await import('#ui/layout')).LayoutComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: Path.TEMPLATE },
-      {
-        path: Path.TEMPLATE,
-        title: 'ng-template',
-        loadChildren: async () => (await import('#template/route')).TemplateRoutes,
-      },
+      { path: '', pathMatch: 'full', redirectTo: Path.FORMS },
       {
         path: Path.FORMS,
         title: 'forms',
         loadChildren: async () => (await import('#forms/route')).FormsRoutes,
+      },
+      {
+        path: Path.TEMPLATE,
+        title: 'ng-template',
+        loadChildren: async () => (await import('#template/route')).TemplateRoutes,
       },
     ],
   },

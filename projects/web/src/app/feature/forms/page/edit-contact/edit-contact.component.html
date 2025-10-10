@@ -1,0 +1,169 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Edit Contact</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="mt-8">
+    <div class="grid gap-4">
+      <div class="flex gap-4">
+        <div class="flex items-center justify-center w-xs">Name/Info</div>
+
+        <div class="grid w-full">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-divider />
+
+      <div class="flex gap-4">
+        <div class="flex items-center justify-center w-xs">Phone</div>
+
+        <div class="grid w-full">
+          <mat-form-field>
+            <mat-label>Phone</mat-label>
+
+            <input matInput type="number" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select>
+              <mat-select-trigger> Trigger value </mat-select-trigger>
+              @for (phoneType of ['mobile', 'piesek']; track $index) {
+                <mat-option [value]="phoneType">{{ phoneType }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-divider />
+
+      <div class="flex gap-4">
+        <div class="flex items-center justify-center w-xs">Email</div>
+
+        <div class="grid w-full">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+
+            <input matInput type="number" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+            @for (kind of ['home', 'work', 'other']; track $index) {
+              <mat-radio-button class="example-radio-button" [value]="kind">{{ kind }}</mat-radio-button>
+            }
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <mat-divider />
+
+      <div class="flex gap-4">
+        <div class="flex items-center justify-center w-xs">Address</div>
+
+        <div class="grid w-full">
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>State/Region</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Zip/Postal Code</mat-label>
+
+            <input matInput type="text" />
+            <!-- @if (value) { -->
+            <button matSuffix matIconButton aria-label="Clear">
+              <mat-icon>close</mat-icon>
+            </button>
+            <!-- } -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Home</mat-label>
+            <mat-select>
+              <mat-select-trigger> Home </mat-select-trigger>
+              @for (addressKind of ['home', 'blok']; track $index) {
+                <mat-option [value]="addressKind">{{ addressKind }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-footer class="my-4 flex gap-4">
+    <button mat-button class="flex-grow-1">Cancel</button>
+    <button matButton="filled" class="flex-grow-1">Save</button>
+  </mat-card-footer>
+</mat-card>

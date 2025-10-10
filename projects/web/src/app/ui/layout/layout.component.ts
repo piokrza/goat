@@ -46,8 +46,8 @@ export class LayoutComponent {
   readonly isOverMdBreakpoint = inject(BreakpointService).observe('md');
 
   readonly links: Link[] = [
-    { label: 'Template', routerLink: Path.TEMPLATE },
     { label: 'Forms', routerLink: Path.FORMS },
+    { label: 'Template', routerLink: Path.TEMPLATE },
   ];
   readonly themes: AppTheme[] = [
     { value: 'theme-blue', viewValue: '🔵' },
