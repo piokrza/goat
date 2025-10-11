@@ -18,6 +18,7 @@
       "#common/*": ["projects/web/src/app/common/*"],
       "#ui/*": ["projects/web/src/app/ui/*"],
       "#auth/*": ["projects/web/src/app/auth/*"],
+      "#firebase/*": ["projects/web/src/app/firebase/*"],
       "#template/*": ["projects/web/src/app/feature/template/*"],
       "#forms/*": ["projects/web/src/app/feature/forms/*"]
     }

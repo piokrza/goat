@@ -1,4 +1,4 @@
 export interface Phone {
   phoneNumber: string;
-  phoneType: string;
+  phoneType: 'home' | 'work' | 'other';
 }

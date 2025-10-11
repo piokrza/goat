@@ -3,7 +3,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { routes } from 'projects/web/src/app';
 
-import { provideEchoFirestoreConfig } from '#auth/firebase/provider';
+import { provideEchoFirestoreConfig } from '#firebase/provider';
 import { initializeAppTheme, registerIcons } from '#ui/provider';
 
 export const appConfig: ApplicationConfig = {

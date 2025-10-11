@@ -10,7 +10,7 @@ export const registerIcons = (): EnvironmentProviders => {
 
     const icons = ['google'];
     icons.forEach((name) => {
-      matIconRegistry.addSvgIcon(name, domSanitizer.bypassSecurityTrustResourceUrl(`../asset/icon/${name}.svg`));
+      matIconRegistry.addSvgIcon(name, domSanitizer.bypassSecurityTrustResourceUrl(`asset/icon/${name}.svg`));
     });
   });
 };
