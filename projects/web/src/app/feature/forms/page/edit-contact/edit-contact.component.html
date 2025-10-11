@@ -119,7 +119,7 @@
             <mat-form-field>
               <mat-label>Home</mat-label>
               <mat-select [formControl]="aC.addressType">
-                <mat-select-trigger> Home </mat-select-trigger>
+                <mat-select-trigger> {{ aC.addressType.value | titlecase }} </mat-select-trigger>
                 @for (addressKind of ['home', 'blok']; track $index) {
                   <mat-option [value]="addressKind">{{ addressKind }}</mat-option>
                 }
@@ -133,6 +133,6 @@
 
   <mat-card-footer class="my-4 flex gap-4">
     <button mat-button class="flex-grow-1">Cancel</button>
-    <button matButton="filled" class="flex-grow-1" (click)="saveContact()">Save</button>
+    <button matButton="filled" class="flex-grow-1" (click)="saveChanges()">Save</button>
   </mat-card-footer>
 </mat-card>

@@ -23,6 +23,8 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   readonly #router = inject(Router);
   readonly #fireAuth = inject(Auth);
 
+  readonly user = this.#fireAuth.currentUser;
+
   createUserWithEmailAndPassword$(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.#fireAuth, email, password)).pipe(
       tap((_) => {
