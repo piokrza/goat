@@ -3,4 +3,5 @@ export enum Path {
   FORMS = 'forms',
   TEMPLATE = 'template',
   EDIT_CONTACT = 'edit-contact',
+  ADD_CONTACT = 'add-contact',
 }

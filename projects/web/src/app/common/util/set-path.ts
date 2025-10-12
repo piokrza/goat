@@ -1,3 +1,3 @@
-export function setPath(pathFragments: string[]): string {
+export function setPath(...pathFragments: string[]): string {
   return pathFragments.join('/');
 }
