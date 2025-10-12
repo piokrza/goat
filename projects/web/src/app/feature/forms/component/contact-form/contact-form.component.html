@@ -131,8 +131,8 @@
     </form>
   </mat-card-content>
 
-  <mat-card-footer class="my-4 flex gap-4">
-    <button mat-button class="flex-grow-1">Cancel</button>
+  <mat-card-footer class="my-4 flex gap-4 px-4">
+    <button mat-button class="flex-grow-1" [routerLink]="['../']">Cancel</button>
     <button matButton="filled" class="flex-grow-1" (click)="saveChanges()">Save</button>
   </mat-card-footer>
 </mat-card>

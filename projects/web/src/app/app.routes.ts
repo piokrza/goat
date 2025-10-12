@@ -31,4 +31,5 @@ export const routes: Routes = [
     data: { authGuardPipe: () => redirectLoggedInTo([Path.TEMPLATE]) },
     loadComponent: async () => (await import('#auth/page')).AuthComponent,
   },
+  { path: '**', redirectTo: '' },
 ];

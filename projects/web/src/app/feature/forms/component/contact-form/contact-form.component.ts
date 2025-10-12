@@ -1,7 +1,7 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, inject, input, OnInit, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { tap } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,7 @@ import { FirebaseApi } from '#firebase/data-access';
 import { Contact, Phone } from '#forms/model';
 
 const imports = [
+  RouterLink,
   MatCardModule,
   MatIconModule,
   TitleCasePipe,
@@ -34,13 +35,14 @@ const imports = [
 })
 export class ContactFormComponent implements OnInit {
   readonly #fb = inject(FormBuilder);
-  readonly #firestoreApi = inject(FirebaseApi);
-  readonly #activatedRoute = inject(ActivatedRoute);
 
-  readonly view = input.required<'add' | 'edit'>();
+  readonly #firestoreApi = inject(FirebaseApi);
+
+  readonly view = input<'add' | 'edit'>('add');
 
   readonly formSubmit = output<Contact>();
 
+  readonly contactId?: string = inject(ActivatedRoute).snapshot.params['id'];
   readonly form = this.#fb.nonNullable.group({
     id: '',
     firstName: '',
@@ -61,6 +63,8 @@ export class ContactFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if (!this.contactId) return;
+
     this.#firestoreApi
       .collectionData$<Contact>('contact')
       .pipe(
@@ -69,9 +73,6 @@ export class ContactFormComponent implements OnInit {
         })
       )
       .subscribe();
-
-    const contactId = this.#activatedRoute.snapshot.params['id'];
-    if (!contactId) return;
   }
 
   saveChanges(): void {

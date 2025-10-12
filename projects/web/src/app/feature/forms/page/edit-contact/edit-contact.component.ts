@@ -6,7 +6,11 @@ const imports = [ContactFormComponent];
 
 @Component({
   selector: 'echo-edit-contact',
-  template: ` <echo-contact-form view="add" /> `,
+  template: `<echo-contact-form view="edit" (formSubmit)="editContact()" />`,
   imports,
 })
-export class AddContactComponent {}
+export class AddContactComponent {
+  editContact(): void {
+    //
+  }
+}

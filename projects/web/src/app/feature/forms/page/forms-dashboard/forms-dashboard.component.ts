@@ -15,7 +15,7 @@ const imports = [MatButtonModule, RouterLink, AsyncPipe];
   template: `
     <h1>My Contacts</h1>
     <div class="mt-8">
-      <button matButton="filled" [routerLink]="[Path.EDIT_CONTACT]">Add Contact</button>
+      <button matButton="filled" [routerLink]="[Path.EDIT_CONTACT, 'wdada']">Add Contact</button>
 
       <div class="border rounded-xl p-4 mt-8">
         @for (contact of contacts$ | async; track $index) {
