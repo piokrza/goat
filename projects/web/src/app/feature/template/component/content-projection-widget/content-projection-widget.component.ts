@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, contentChild, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, signal } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -38,6 +38,7 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
       </mat-card-content>
     </mat-card>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class ContentProjectionWidgetComponent {

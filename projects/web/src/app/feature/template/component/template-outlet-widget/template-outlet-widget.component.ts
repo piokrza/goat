@@ -1,7 +1,7 @@
 import { NgTemplateWidgetActionsService, NgTemplateWidgetStateService } from '../../service';
 
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, Injector, input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Injector, input, TemplateRef } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -47,6 +47,7 @@ const imports = [MatCardModule, MatButtonModule, NgTemplateOutlet];
       </mat-card-actions>
     </mat-card>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class TemlateOutletWidgetComponent {

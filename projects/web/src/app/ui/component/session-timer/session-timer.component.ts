@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, input, linkedSignal, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, input, linkedSignal, OnInit } from '@angular/core';
 
 @Component({
   selector: 'echo-session-timer',
@@ -19,6 +19,7 @@ import { Component, computed, DestroyRef, inject, input, linkedSignal, OnInit } 
       </div>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SessionTimerComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef);

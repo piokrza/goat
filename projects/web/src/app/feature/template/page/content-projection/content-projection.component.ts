@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ContentProjectionWidgetComponent } from '#template/component/content-projection-widget';
 import { ExampleWidgetContentComponent } from '#template/component/example-widget-content';
@@ -16,6 +16,7 @@ const imports = [ContentProjectionWidgetComponent, ContentDirective, ExampleWidg
       <echo-example-widget-content *widgetContent />
     </echo-content-projection-widget>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class ContentProjectionComponent {}

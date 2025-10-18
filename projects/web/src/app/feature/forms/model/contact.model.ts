@@ -8,6 +8,6 @@ export interface Contact {
   address: Address;
   personal: boolean;
   firstName: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date | null;
   favoritesRanking: number | null;
 }

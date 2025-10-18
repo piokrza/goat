@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, WritableSignal } from '@angular/core';
 
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -24,6 +24,7 @@ const imports = [MatTabsModule, ContentProjectionComponent, NgTemplateComponent]
       </mat-tab>
     </mat-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class SectionToolbarComponent {

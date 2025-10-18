@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -16,6 +16,7 @@ const imports = [MatCardModule, MatButtonModule, MatInputModule, MatIconModule, 
   selector: 'echo-auth',
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class AuthComponent {

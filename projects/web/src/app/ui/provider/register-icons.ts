@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { MatIconRegistry } from '@angular/material/icon';
 
-export const registerIcons = (): EnvironmentProviders => {
+export const initializeCustomIcons = (): EnvironmentProviders => {
   return provideAppInitializer(() => {
     const domSanitizer = inject(DomSanitizer);
     const matIconRegistry = inject(MatIconRegistry);

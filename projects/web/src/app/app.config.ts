@@ -4,13 +4,13 @@ import { provideRouter, withViewTransitions } from '@angular/router';
 import { routes } from 'projects/web/src/app';
 
 import { provideEchoFirestoreConfig } from '#firebase/provider';
-import { initializeAppTheme, registerIcons } from '#ui/provider';
+import { initializeAppTheme, initializeCustomIcons } from '#ui/provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    registerIcons(),
     provideHttpClient(),
     initializeAppTheme(),
+    initializeCustomIcons(),
     provideEchoFirestoreConfig(),
     provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),

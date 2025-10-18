@@ -21,12 +21,12 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   }
 
   readonly #router = inject(Router);
-  readonly #fireAuth = inject(Auth);
+  readonly #auth = inject(Auth);
 
-  readonly user = this.#fireAuth.currentUser;
+  readonly user = this.#auth.currentUser;
 
   createUserWithEmailAndPassword$(email: string, password: string): Observable<UserCredential> {
-    return from(createUserWithEmailAndPassword(this.#fireAuth, email, password)).pipe(
+    return from(createUserWithEmailAndPassword(this.#auth, email, password)).pipe(
       tap((_) => {
         // updateProfile(res.user, { displayName: username });
       })
@@ -36,7 +36,7 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   loginWithEmailAndPassword$(email: string, password: string): Observable<UserCredential> {
     this.update('isProcessing', true);
 
-    return from(signInWithEmailAndPassword(this.#fireAuth, email, password)).pipe(
+    return from(signInWithEmailAndPassword(this.#auth, email, password)).pipe(
       tap({
         next: () => {
           this.#router.navigate([Path.TEMPLATE]);
@@ -51,7 +51,7 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   loginWithGoogle$(): Observable<UserCredential> {
     this.update('isProcessing', true);
 
-    return from(signInWithPopup(this.#fireAuth, new GoogleAuthProvider())).pipe(
+    return from(signInWithPopup(this.#auth, new GoogleAuthProvider())).pipe(
       tap({
         next: () => {
           this.#router.navigate([Path.TEMPLATE]);
@@ -64,7 +64,7 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   }
 
   logout$(): Observable<void> {
-    return from(this.#fireAuth.signOut()).pipe(
+    return from(this.#auth.signOut()).pipe(
       tap(() => {
         this.#router.navigate([Path.AUTH]);
       })

@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component, inject, input, OnInit, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnInit, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { tap } from 'rxjs';
@@ -33,6 +33,7 @@ const imports = [
 @Component({
   selector: 'echo-contact-form',
   templateUrl: './contact-form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class ContactFormComponent implements OnInit {
@@ -45,6 +46,7 @@ export class ContactFormComponent implements OnInit {
   readonly contactId?: string = inject(ActivatedRoute).snapshot.params['id'];
   readonly form = this.#fb.nonNullable.group({
     id: '',
+    uid: '',
     firstName: '',
     lastName: '',
     personal: false,
@@ -82,6 +84,6 @@ export class ContactFormComponent implements OnInit {
       return;
     }
 
-    this.formSubmit.emit(this.form.value as Contact);
+    this.formSubmit.emit(this.form.value as Contact); //TODO: handle type assertion
   }
 }

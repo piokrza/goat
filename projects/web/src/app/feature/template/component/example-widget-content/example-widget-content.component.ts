@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'echo-example-widget-content',
@@ -8,6 +8,7 @@ import { Component, OnDestroy } from '@angular/core';
       <p>Content description</p>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleWidgetContentComponent implements OnDestroy {
   ngOnDestroy(): void {

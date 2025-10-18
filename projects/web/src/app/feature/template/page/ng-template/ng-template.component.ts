@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { TemlateOutletWidgetComponent } from '#template/component/template-outlet-widget';
 import { TemplateWidgetCustomActions } from '#template/component/template-widget-custom-actions';
@@ -26,6 +26,7 @@ const imports = [TemlateOutletWidgetComponent, TemplateWidgetCustomActions];
       <echo-template-widget-custom-actions />
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class NgTemplateComponent {}

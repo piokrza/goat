@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 
@@ -14,6 +14,7 @@ const imports = [MatButtonModule];
       <button mat-stroked-button (click)="reloadAndCopy()">Reload & Copy</button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class TemplateWidgetCustomActions {
