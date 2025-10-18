@@ -6,6 +6,7 @@ export interface Contact {
   phone: Phone;
   lastName: string;
   address: Address;
+  personal: boolean;
   firstName: string;
   dateOfBirth: Date;
   favoritesRanking: number | null;

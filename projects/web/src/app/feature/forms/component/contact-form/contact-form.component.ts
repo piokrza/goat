@@ -6,6 +6,7 @@ import { tap } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +26,7 @@ const imports = [
   MatButtonModule,
   MatSelectModule,
   MatDividerModule,
+  MatCheckboxModule,
   ReactiveFormsModule,
 ];
 
@@ -35,11 +37,9 @@ const imports = [
 })
 export class ContactFormComponent implements OnInit {
   readonly #fb = inject(FormBuilder);
-
   readonly #firestoreApi = inject(FirebaseApi);
 
   readonly view = input<'add' | 'edit'>('add');
-
   readonly formSubmit = output<Contact>();
 
   readonly contactId?: string = inject(ActivatedRoute).snapshot.params['id'];
@@ -47,6 +47,7 @@ export class ContactFormComponent implements OnInit {
     id: '',
     firstName: '',
     lastName: '',
+    personal: false,
     dateOfBirth: null as Date | null,
     favoritesRanking: null as number | null,
     phone: this.#fb.nonNullable.group({
