@@ -67,7 +67,7 @@ export class ContactFormComponent implements OnInit {
     if (!this.contactId) return;
 
     this.#firestoreApi
-      .collectionData$<Contact>('contact')
+      .collectionData$('contact')
       .pipe(
         tap((data) => {
           this.form.patchValue(data[0]);

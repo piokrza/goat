@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { Path } from '#common/enum';
 import { FirebaseApi } from '#firebase/data-access';
-import { Contact } from '#forms/model';
 
 const imports = [MatButtonModule, RouterLink, AsyncPipe];
 
@@ -30,7 +29,7 @@ const imports = [MatButtonModule, RouterLink, AsyncPipe];
 export class FormsDashboardComponent {
   readonly #firestoreApi = inject(FirebaseApi);
 
-  readonly contacts$ = this.#firestoreApi.collectionData$<Contact>('contact');
+  readonly contacts$ = this.#firestoreApi.collectionData$('contact');
 
   readonly Path = Path;
 }
