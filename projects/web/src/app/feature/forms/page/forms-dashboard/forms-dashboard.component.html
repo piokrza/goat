@@ -1,15 +1,17 @@
+@let s = state();
+
 <h1>My Contacts</h1>
 <div class="mt-8">
   <button matButton="filled" [routerLink]="[Path.ADD_CONTACT]">Add Contact</button>
 
   <div class="grid gap-4 border rounded-xl p-4 mt-8">
-    @if (isLoading()) {
-      Loading..
+    @if (s.isLoading) {
+      Loading...
     } @else {
-      @if (!contacts().length) {
+      @if (!s.contacts.length) {
         No contacts yet
       } @else {
-        @for (contact of contacts(); track contact.id) {
+        @for (contact of s.contacts; track contact.id) {
           <div class="flex gap-4 items-center justify-between p-3">
             <div class="flex gap-1">
               <p>{{ contact.firstName }}</p>
