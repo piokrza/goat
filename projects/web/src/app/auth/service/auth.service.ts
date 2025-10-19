@@ -64,10 +64,6 @@ export class AuthService extends Store<{ isProcessing: boolean }> {
   }
 
   logout$(): Observable<void> {
-    return from(this.#auth.signOut()).pipe(
-      tap(() => {
-        this.#router.navigate([Path.AUTH]);
-      })
-    );
+    return from(this.#auth.signOut()).pipe(tap(() => this.#router.navigate([Path.AUTH])));
   }
 }

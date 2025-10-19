@@ -77,7 +77,7 @@ export class ContactFormComponent implements OnInit {
       return;
     }
 
-    this.formSubmit.emit(this.form.value as Contact); //TODO: handle type assertion
+    this.formSubmit.emit(this.form.value as Contact);
   }
 
   private pathFormValue(): void {

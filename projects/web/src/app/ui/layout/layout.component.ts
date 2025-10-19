@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { filter, switchMap } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +16,7 @@ import { AuthService } from '#auth/service';
 import { Path } from '#common/enum';
 import { BreadcrumbsComponent } from '#ui/component/breadcrumbs';
 import { AppTheme, Link } from '#ui/model';
-import { ThemeService, BreakpointService } from '#ui/service';
+import { ThemeService, BreakpointService, ConfirmDialogService } from '#ui/service';
 
 const imports = [
   RouterLink,
@@ -43,6 +44,7 @@ export class LayoutComponent {
   readonly #destroyRef = inject(DestroyRef);
   readonly #authService = inject(AuthService);
   readonly #themeService = inject(ThemeService);
+  readonly #confirmDialog = inject(ConfirmDialogService);
 
   readonly isDarkMode = this.#themeService.isDarkMode;
   readonly selectedTheme = this.#themeService.selectedTheme;
@@ -67,6 +69,13 @@ export class LayoutComponent {
   }
 
   logout(): void {
-    this.#authService.logout$().pipe(takeUntilDestroyed(this.#destroyRef)).subscribe();
+    this.#confirmDialog
+      .open$({ title: 'Do you really want to sign out?' })
+      .pipe(
+        filter(Boolean),
+        switchMap(() => this.#authService.logout$()),
+        takeUntilDestroyed(this.#destroyRef)
+      )
+      .subscribe();
   }
 }

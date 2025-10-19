@@ -1,0 +1,36 @@
+<h1>My Contacts</h1>
+<div class="mt-8">
+  <button matButton="filled" [routerLink]="[Path.ADD_CONTACT]">Add Contact</button>
+
+  <div class="grid gap-4 border rounded-xl p-4 mt-8">
+    @if (isLoading()) {
+      Loading..
+    } @else {
+      @if (!contacts().length) {
+        No contacts yet
+      } @else {
+        @for (contact of contacts(); track contact.id) {
+          <div class="flex gap-4 items-center justify-between p-3">
+            <div class="flex gap-1">
+              <p>{{ contact.firstName }}</p>
+              <p>{{ contact.lastName }}</p>
+            </div>
+
+            <div class="flex gap-4">
+              <button matMiniFab matTooltip="Edit contact" [routerLink]="[Path.EDIT_CONTACT, contact.id]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button matMiniFab matTooltip="Delete contact" (click)="removeContact(contact)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          @if (!$last) {
+            <mat-divider />
+          }
+        }
+      }
+    }
+  </div>
+</div>

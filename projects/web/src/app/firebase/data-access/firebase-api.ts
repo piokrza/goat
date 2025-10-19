@@ -1,15 +1,16 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  addDoc,
-  collection,
-  collectionData,
   doc,
-  DocumentData,
-  DocumentReference,
-  Firestore,
   query,
-  updateDoc,
   where,
+  addDoc,
+  Firestore,
+  deleteDoc,
+  updateDoc,
+  collection,
+  DocumentData,
+  collectionData,
+  DocumentReference,
 } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 
@@ -43,5 +44,11 @@ export class FirebaseApi {
     const documentRef = doc(this.#firestore, colleciontName, docId);
 
     return from(updateDoc(documentRef, data));
+  }
+
+  removeDocument$<T extends CollectionName>(collectionName: T, docId: string): Observable<void> {
+    const documentRef = doc(this.#firestore, collectionName, docId);
+
+    return from(deleteDoc(documentRef));
   }
 }
