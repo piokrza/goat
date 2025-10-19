@@ -10,10 +10,10 @@ export const FormsRoutes: Routes = [
   },
   {
     path: Path.ADD_CONTACT,
-    loadComponent: async () => (await import('#forms/component/contact-form')).ContactFormComponent,
+    loadComponent: async () => (await import('#forms/page/add-contact')).AddContactComponent,
   },
   {
     path: setPath(Path.EDIT_CONTACT, ':id'),
-    loadComponent: async () => (await import('#forms/component/contact-form')).ContactFormComponent,
+    loadComponent: async () => (await import('#forms/page/edit-contact')).EditContactComponent,
   },
 ];

@@ -1,5 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, DocumentData, DocumentReference, Firestore, query, where } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  collectionData,
+  doc,
+  DocumentData,
+  DocumentReference,
+  Firestore,
+  query,
+  updateDoc,
+  where,
+} from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 
 import { AuthService } from '#auth/service';
@@ -19,10 +30,18 @@ export class FirebaseApi {
     }) as Observable<CollectionMap[T][]>;
   }
 
-  addDocument$<T extends CollectionName>(name: T, data: CollectionMap[T]): Observable<DocumentReference<DocumentData, DocumentData>> {
-    const colRef = collection(this.#firestore, name);
-    const promise = addDoc(colRef, { ...data, uid: this.#user?.uid });
+  addDocument$<T extends CollectionName>(
+    colleciontName: T,
+    data: CollectionMap[T]
+  ): Observable<DocumentReference<DocumentData, DocumentData>> {
+    const collectionRef = collection(this.#firestore, colleciontName);
 
-    return from(promise);
+    return from(addDoc(collectionRef, { ...data, uid: this.#user?.uid }));
+  }
+
+  updateDocument$<T extends CollectionName>(colleciontName: T, docId: string, data: Partial<DocumentData>): Observable<void> {
+    const documentRef = doc(this.#firestore, colleciontName, docId);
+
+    return from(updateDoc(documentRef, data));
   }
 }

@@ -2,7 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, OnInit, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { tap } from 'rxjs';
+import { map, take, tap } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -40,7 +40,9 @@ export class ContactFormComponent implements OnInit {
   readonly #fb = inject(FormBuilder);
   readonly #firestoreApi = inject(FirebaseApi);
 
+  readonly isProcessing = input(false);
   readonly view = input<'add' | 'edit'>('add');
+
   readonly formSubmit = output<Contact>();
 
   readonly contactId?: string = inject(ActivatedRoute).snapshot.params['id'];
@@ -66,16 +68,7 @@ export class ContactFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    if (!this.contactId) return;
-
-    this.#firestoreApi
-      .collectionData$('contact')
-      .pipe(
-        tap((data) => {
-          this.form.patchValue(data[0]);
-        })
-      )
-      .subscribe();
+    this.pathFormValue();
   }
 
   saveChanges(): void {
@@ -85,5 +78,20 @@ export class ContactFormComponent implements OnInit {
     }
 
     this.formSubmit.emit(this.form.value as Contact); //TODO: handle type assertion
+  }
+
+  private pathFormValue(): void {
+    if (!this.contactId) return;
+
+    this.#firestoreApi
+      .collectionData$('contact')
+      .pipe(
+        map((contacts) => contacts.find(({ id }) => id === this.contactId)),
+        tap((contact) => {
+          if (contact) this.form.patchValue(contact);
+        }),
+        take(1)
+      )
+      .subscribe();
   }
 }

@@ -1,4 +1,8 @@
 <mat-toolbar>
+  <div class="my-4">
+    <echo-breadcrumbs [breadcrumbs]="[]" />
+  </div>
+
   <div class="w-full flex justify-between items-center">
     <div class="flex gap-4">
       <button matIconButton class="cursor-pointer lg:hidden" (click)="drawer.toggle()">

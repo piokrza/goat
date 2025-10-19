@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AuthService } from '#auth/service';
 import { Path } from '#common/enum';
+import { BreadcrumbsComponent } from '#ui/component/breadcrumbs';
 import { AppTheme, Link } from '#ui/model';
 import { ThemeService, BreakpointService } from '#ui/service';
 
@@ -29,11 +30,13 @@ const imports = [
   MatToolbarModule,
   MatSidenavModule,
   ReactiveFormsModule,
+  BreadcrumbsComponent,
 ];
 
 @Component({
   selector: 'echo-layout',
   templateUrl: './layout.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
 })
 export class LayoutComponent {
