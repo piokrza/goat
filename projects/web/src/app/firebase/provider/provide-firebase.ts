@@ -5,7 +5,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 import { firebaseConfig } from '#firebase/provider';
 
-export const provideEchoFirestoreConfig = (): EnvironmentProviders => {
+export const provideEchoFirebaseConfig = (): EnvironmentProviders => {
   return makeEnvironmentProviders([
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

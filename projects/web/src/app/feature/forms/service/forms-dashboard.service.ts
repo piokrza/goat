@@ -1,11 +1,11 @@
-import { DestroyRef, inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable, Signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { Observable, switchMap, tap } from 'rxjs';
 
 import { Path } from '#common/enum';
 import { FirebaseApi } from '#firebase/data-access';
-import { Contact } from '#forms/model';
+import { Contact, FormsDashboardState } from '#forms/model';
 import { FormsDashboardStore } from '#forms/state';
 import { ConfirmDialogService } from '#ui/service';
 
@@ -17,7 +17,7 @@ export class FormsDashboardService {
   readonly #confirmDialog = inject(ConfirmDialogService);
   readonly #formsDashboardStore = inject(FormsDashboardStore);
 
-  readonly state = this.#formsDashboardStore.state;
+  readonly state: Signal<FormsDashboardState> = this.#formsDashboardStore.state;
 
   readonly Path = Path;
 
