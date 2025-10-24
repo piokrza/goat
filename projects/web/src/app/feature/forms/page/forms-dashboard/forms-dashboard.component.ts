@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, Signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Path } from '#common/enum';
-import { Contact } from '#forms/model';
+import { Contact, FormsDashboardState } from '#forms/model';
 import { FormsDashboardService } from '#forms/service';
 
 const imports = [MatButtonModule, RouterLink, MatDividerModule, MatIconModule, RouterLink, MatTooltipModule];
@@ -23,7 +23,7 @@ export class FormsDashboardComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef);
   readonly #formsDashboardService = inject(FormsDashboardService);
 
-  readonly state = this.#formsDashboardService.state;
+  readonly state: Signal<FormsDashboardState> = this.#formsDashboardService.state;
 
   readonly Path = Path;
 
