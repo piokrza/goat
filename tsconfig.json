@@ -2,10 +2,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": "./",
+    "esModuleInterop": true,
     "baseUrl": "./",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "moduleResolution": "bundler",
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
